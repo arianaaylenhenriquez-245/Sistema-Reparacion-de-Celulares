@@ -1,0 +1,263 @@
+
+/*css pantalla wcom xdxd*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background-color: #f3f6fb;
+    color: #17243b;
+}
+
+.pagina-acceso {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.presentacion {
+    position: relative;
+    padding: 0 12.5%;
+    background-color: #111c34;
+    color: white;
+}
+
+.texto-marca {
+    padding-top: clamp(100px, 23vh, 205px);
+    padding-bottom: 150px;
+}
+
+.logo-letra {
+    display: grid;
+    place-items: center;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 32px;
+    border-radius: 18px;
+    background-color: #2563eb;
+    font-size: 39px;
+    font-weight: bold;
+}
+
+.presentacion h1 {
+    margin: 0;
+    font-size: 47px;
+}
+
+.subtitulo-marca {
+    margin: 28px 0 0;
+    color: #cbd5e1;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.descripcion-marca {
+    margin-top: 30px;
+    color: #9eaeca;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.pie-marca {
+    position: absolute;
+    bottom: 10%;
+    left: 12.5%;
+    right: 12.5%;
+    margin: 0;
+    color: #9eaeca;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.zona-acceso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+.contenido-bienvenida {
+    width: 100%;
+    max-width: 420px;
+}
+
+.contenido-bienvenida h2 {
+    margin: 0 0 26px;
+    font-size: 38px;
+}
+
+.frase-bienvenida {
+    margin: 0 0 24px;
+    color: #64748b;
+    font-size: 20px;
+}
+
+.descripcion-bienvenida {
+    margin: 0;
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.boton-comenzar {
+    display: block;
+    margin-top: 64px;
+    padding: 19px;
+    border-radius: 12px;
+    background-color: #2563eb;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.boton-comenzar:hover {
+    background-color: #1d4ed8;
+}
+
+.ayuda-bienvenida {
+    margin-top: 24px;
+    color: #64748b;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* css pantalla login xdxd */
+
+.login {
+    grid-template-columns: 670fr 770fr;
+}
+
+.login .presentacion {
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+.login .texto-marca {
+    padding-top: clamp(100px, 31vh, 276px);
+}
+
+.login .presentacion h1 {
+    font-size: 42px;
+}
+
+.login .subtitulo-marca {
+    color: #bac7df;
+    font-size: 20px;
+}
+
+.contenido-login {
+    width: 100%;
+    max-width: 435px;
+}
+
+.contenido-login h2 {
+    margin: 0 0 64px;
+    font-size: 30px;
+}
+
+.campo-acceso + .campo-acceso {
+    margin-top: 32px;
+}
+
+.campo-acceso label {
+    display: block;
+    margin-bottom: 12px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.campo-acceso input {
+    width: 100%;
+    height: 43px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #f3f6fb;
+    color: #17243b;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.campo-acceso input::placeholder {
+    color: #64748b;
+}
+
+.campo-acceso input:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.recuperar-acceso {
+    margin: 20px 0;
+    text-align: right;
+}
+
+.recuperar-acceso button {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.boton-ingresar {
+    width: 100%;
+    min-height: 38px;
+    padding: 11px 15px;
+    border: none;
+    border-radius: 9px;
+    background-color: #2563eb;
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+.nota-acceso {
+    margin: 32px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+    .pagina-acceso {
+        grid-template-columns: 1fr;
+    }
+
+    .presentacion,
+    .login .presentacion {
+        padding: 40px 24px;
+    }
+
+    .texto-marca,
+    .login .texto-marca {
+        padding: 0;
+    }
+
+    .presentacion h1,
+    .login .presentacion h1 {
+        font-size: 34px;
+    }
+
+    .pie-marca {
+        position: static;
+        margin-top: 40px;
+    }
+
+    .zona-acceso {
+        padding: 48px 24px;
+    }
+}

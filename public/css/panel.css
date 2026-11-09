@@ -1,0 +1,562 @@
+
+/* css de la pantalla principal xd */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background-color: #f3f6fb;
+    color: #17243b;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 248px;
+    height: 100vh;
+    padding: 29px 14px;
+    background-color: #111c34;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.marca {
+    padding: 0 13px;
+}
+
+.marca h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.marca p {
+    margin-top: 16px;
+    font-size: 11px;
+    color: #93a4c1;
+}
+
+nav {
+    display: grid;
+    gap: 13px;
+    margin-top: 34px;
+}
+
+nav a {
+    display: block;
+    padding: 14px 15px;
+    border-radius: 9px;
+    text-decoration: none;
+    color: #bac7df;
+    font-size: 15px;
+}
+
+nav a:hover,
+nav a.activo {
+    background-color: #263c68;
+    color: white;
+}
+
+nav a.activo {
+    font-weight: bold;
+}
+
+.usuario {
+    margin-top: auto;
+    padding: 30px 9px 0;
+    font-size: 13px;
+}
+
+.contenido {
+    margin-left: 248px;
+    padding: 30px 40px 42px 31px;
+}
+
+.encabezado {
+    padding-left: 6px;
+    margin-bottom: 24px;
+}
+
+.encabezado h1 {
+    margin: 0 0 14px;
+    font-size: 29px;
+}
+
+.encabezado p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.panel {
+    min-height: 740px;
+    padding: 27px 36px 30px 30px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.titulo-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.titulo-panel h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.boton {
+    display: inline-block;
+    min-width: 174px;
+    padding: 11px 15px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.boton:hover {
+    background-color: #1d4ed8;
+}
+
+.indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-top: 33px;
+}
+
+.tarjeta {
+    min-height: 115px;
+    padding: 18px;
+    border-radius: 11px;
+    background-color: #f3f6fb;
+}
+
+.tarjeta.destacada {
+    background-color: #eaf1ff;
+}
+
+.tarjeta h3 {
+    margin: 0 0 12px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.tarjeta p {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.titulo-tabla {
+    margin: 36px 0 16px;
+    font-size: 19px;
+}
+
+.contenedor-tabla {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: separate;
+    border-spacing: 0 3px;
+    table-layout: fixed;
+    font-size: 12px;
+}
+
+th,
+td {
+    padding: 16px 14px;
+    text-align: left;
+}
+
+th {
+    background-color: #eaf1ff;
+}
+
+th:first-child {
+    border-radius: 7px 0 0 7px;
+}
+
+th:last-child {
+    border-radius: 0 7px 7px 0;
+}
+
+td {
+    height: 55px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f3f6fb;
+}
+
+@media (max-width: 1100px) {
+    .indicadores {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .menu-lateral {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    nav {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 20px;
+    }
+
+    .usuario {
+        padding-top: 15px;
+    }
+
+    .contenido {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .panel {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .titulo-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .indicadores {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* css de la pantalla clientes xd */
+
+.buscador {
+    max-width: 520px;
+    margin: 32px 0;
+}
+
+.buscador label,
+.campo label {
+    display: block;
+    margin-bottom: 12px;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.buscador input,
+.campo input {
+    width: 100%;
+    min-width: 0;
+    height: 43px;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #f3f6fb;
+    color: #17243b;
+    font: inherit;
+    font-size: 13px;
+}
+
+.buscador input::placeholder,
+.campo input::placeholder {
+    color: #64748b;
+}
+
+.buscador input:focus,
+.campo input:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.seccion-formulario {
+    margin-top: 75px;
+    scroll-margin-top: 24px;
+}
+
+.seccion-formulario h2 {
+    margin: 0 0 24px;
+    font-size: 19px;
+}
+
+.formulario-clientes {
+    display: grid;
+    grid-template-columns: 1.3fr 0.85fr 1fr auto;
+    align-items: end;
+    gap: 22px;
+}
+
+.campo {
+    min-width: 0;
+}
+
+button.boton {
+    border: none;
+    text-align: left;
+    font-family: inherit;
+}
+
+.accion {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #17243b;
+    font: inherit;
+}
+
+button:disabled {
+    cursor: not-allowed;
+}
+
+@media (max-width: 1100px) {
+    .formulario-clientes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .formulario-clientes {
+        grid-template-columns: 1fr;
+    }
+
+    .seccion-formulario {
+        margin-top: 40px;
+    }
+}
+
+/*css pantalla de equipos xdxd*/
+
+.formulario-equipos {
+    margin-top: 32px;
+    scroll-margin-top: 24px;
+}
+
+.fila-equipo {
+    display: grid;
+    gap: 22px;
+    max-width: 810px;
+    margin-bottom: 24px;
+}
+
+.tres-columnas {
+    grid-template-columns: 1.25fr 0.9fr 1fr;
+}
+
+.datos-fisicos {
+    grid-template-columns: 1fr 1.55fr;
+}
+
+.dos-columnas {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.campo select {
+    width: 100%;
+    height: 43px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: #f3f6fb;
+    color: #64748b;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.campo select:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+@media (max-width: 900px) {
+    .fila-equipo {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*css pantalla de reparaciones xdxd*/
+
+.buscador-orden {
+    max-width: 470px;
+}
+
+.formulario-orden {
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr;
+    gap: 22px;
+    max-width: 846px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+    .formulario-orden {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pantalla de estados  xdxd*/
+
+.flujo-estados {
+    margin-top: 32px;
+}
+
+.flujo-estados h2 {
+    margin: 0 0 24px;
+    font-size: 17px;
+}
+
+.lista-estados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-estados li {
+    display: flex;
+    align-items: center;
+    min-height: 62px;
+    padding: 15px;
+    border-radius: 9px;
+    background-color: #f3f6fb;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.lista-estados .estado-destacado {
+    background-color: #eaf1ff;
+}
+
+.historial-estados {
+    margin-top: 64px;
+}
+
+.historial-estados .titulo-tabla {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 1100px) {
+    .lista-estados {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .lista-estados {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Pantalla de presupuestos */
+
+.formulario-presupuesto {
+    margin-top: 38px;
+    scroll-margin-top: 24px;
+}
+
+.campo-orden {
+    max-width: 340px;
+}
+
+.costos-presupuesto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    max-width: 852px;
+    margin-top: 30px;
+}
+
+.total-presupuesto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    min-height: 103px;
+    margin-top: 40px;
+    padding: 22px;
+    border-radius: 10px;
+    background-color: #eaf1ff;
+}
+
+.total-presupuesto span {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.total-presupuesto strong {
+    font-size: 32px;
+}
+
+.pie-presupuesto {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.pie-presupuesto .campo {
+    width: 300px;
+    max-width: 100%;
+}
+
+.nota-panel {
+    margin-top: 24px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Pantalla de precios  xdxd*/
+
+.nota-precios {
+    margin-top: 75px;
+}
+
+@media (max-width: 900px) {
+    .costos-presupuesto {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .pie-presupuesto {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pie-presupuesto .campo {
+        width: 100%;
+    }
+
+    .total-presupuesto {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
