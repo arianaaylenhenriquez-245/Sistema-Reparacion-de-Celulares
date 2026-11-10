@@ -26,12 +26,19 @@
                 </a>
             </div>
 
+            @if (session('exito'))
+                <p role="status" style="color: #15803d;">
+                    {{ session('exito') }}
+                </p>
+            @endif
+
             <div class="buscador">
                 <label for="buscar">Buscar por nombre, DNI o teléfono</label>
                 <input
                     type="search"
                     id="buscar"
-                    placeholder="Buscar cliente..."
+                    placeholder="Buscador pendiente de habilitar"
+                    disabled
                 >
             </div>
 
@@ -48,41 +55,25 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>Ana López</td>
-                            <td>40111222</td>
-                            <td>3884123456</td>
-                            <td>
-                                <button type="button" class="accion" disabled>
-                                    Editar
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>002</td>
-                            <td>Juan Pérez</td>
-                            <td>38123456</td>
-                            <td>3884556677</td>
-                            <td>
-                                <button type="button" class="accion" disabled>
-                                    Editar
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>003</td>
-                            <td>María Díaz</td>
-                            <td>42987654</td>
-                            <td>3884001122</td>
-                            <td>
-                                <button type="button" class="accion" disabled>
-                                    Editar
-                                </button>
-                            </td>
-                        </tr>
+                        @forelse ($clientes as $cliente)
+                            <tr>
+                                <td>{{ $cliente->id }}</td>
+                                <td>{{ $cliente->nombre }}</td>
+                                <td>{{ $cliente->dni }}</td>
+                                <td>{{ $cliente->telefono }}</td>
+                                <td>
+                                    <button type="button" class="accion" disabled>
+                                        Editar
+                                    </button>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="5">
+                                    Todavía no hay clientes registrados.
+                                </td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>
@@ -90,13 +81,33 @@
             <section id="formulario-cliente" class="seccion-formulario">
                 <h2>Formulario de cliente</h2>
 
-                <form class="formulario-clientes">
+                @if ($errors->any())
+                    <div role="alert" style="color: #b91c1c;">
+                        <p>Revisá los siguientes datos:</p>
+
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form
+                    class="formulario-clientes"
+                    action="{{ route('clientes.store') }}"
+                    method="POST"
+                >
+                    @csrf
+
                     <div class="campo">
                         <label for="nombre">Nombre y apellido</label>
                         <input
                             type="text"
                             id="nombre"
                             name="nombre"
+                            value="{{ old('nombre') }}"
+                            maxlength="100"
                             placeholder="Ingresar información"
                             required
                         >
@@ -108,6 +119,8 @@
                             type="text"
                             id="dni"
                             name="dni"
+                            value="{{ old('dni') }}"
+                            maxlength="20"
                             inputmode="numeric"
                             placeholder="Ingresar información"
                             required
@@ -120,12 +133,14 @@
                             type="tel"
                             id="telefono"
                             name="telefono"
+                            value="{{ old('telefono') }}"
+                            maxlength="30"
                             placeholder="Ingresar información"
                             required
                         >
                     </div>
 
-                    <button type="button" class="boton" disabled>
+                    <button type="submit" class="boton">
                         Guardar
                     </button>
                 </form>
