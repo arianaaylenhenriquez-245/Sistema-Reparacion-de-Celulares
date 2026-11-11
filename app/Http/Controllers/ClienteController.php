@@ -4,17 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; //
 
 class ClienteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clientes = Cliente::orderBy('id', 'desc')->get();
+    $request->validate([
+        'buscar' => ['nullable', 'string', 'max:100'],
+    ]);
+ //$buscar guarda lo que escribis en el buscador
+ //trim() elimina espacios al principio y final
+    $buscar = trim($request->input('buscar', ''));
 
-        return view('clientes', [
-            'clientes' => $clientes,
-        ]);
+    $consulta = Cliente::query();
+
+    //busca coincidencias 
+    //orWhere:permite que coincida el nmbre,dni,telf
+
+    if ($buscar !== '') {
+        $consulta->where(function ($query) use ($buscar) {
+            $query->where('nombre', 'like', '%' . $buscar . '%')
+                ->orWhere('dni', 'like', '%' . $buscar . '%')
+                ->orWhere('telefono', 'like', '%' . $buscar . '%');
+        });
     }
+
+    $clientes = $consulta->orderBy('id', 'desc')->get();
+
+    return view('clientes', [
+        'clientes' => $clientes,
+        'buscar' => $buscar,
+    ]);
+}
 
     public function store(Request $request)
     {
@@ -35,4 +57,25 @@ class ClienteController extends Controller
             ->route('clientes')
             ->with('exito', 'Cliente registrado correctamente.');
     }
-}
+
+
+public function destroy(Cliente $cliente)
+{
+    $tieneEquipos = DB::table('equipos')
+        ->where('cliente_id', $cliente->id)
+        ->exists();
+
+    if ($tieneEquipos) {
+        return redirect()
+            ->route('clientes')
+            ->with('error', 'No se puede eliminar: el cliente tiene equipos asociados.');
+    }
+
+    $cliente->delete();
+
+    return redirect()
+        ->route('clientes')
+        ->with('exito', 'Cliente eliminado correctamente.');
+    } //cierre del metodo destroy
+
+}//cierre de la clase Clientecontrolador xd

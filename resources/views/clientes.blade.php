@@ -31,15 +31,38 @@
                     {{ session('exito') }}
                 </p>
             @endif
+            
+            @if (session('error'))
+              <p role="alert" style="color: #b91c1c;">
+                   {{ session('error') }}
+               </p>
+            @endif
 
             <div class="buscador">
+                <<form
+                    class="buscador"
+                    action="{{ route('clientes') }}"
+                    method="GET"
+>
                 <label for="buscar">Buscar por nombre, DNI o teléfono</label>
+
                 <input
-                    type="search"
-                    id="buscar"
-                    placeholder="Buscador pendiente de habilitar"
-                    disabled
-                >
+                   type="search"
+                   id="buscar"
+                   name="buscar"
+                   value="{{ $buscar }}"
+                   maxlength="100"
+                   placeholder="Buscar cliente..."
+      >
+
+            <div style="display: flex; gap: 12px; margin-top: 12px;">
+                <button type="submit" class="boton"> Buscar </button>
+
+        <a href="{{ route('clientes') }}" class="boton">
+            Ver todos
+        </a>
+    </div>
+</form>
             </div>
 
             <div class="contenedor-tabla">
@@ -62,17 +85,42 @@
                                 <td>{{ $cliente->dni }}</td>
                                 <td>{{ $cliente->telefono }}</td>
                                 <td>
-                                    <button type="button" class="accion" disabled>
-                                        Editar
-                                    </button>
+                                        <button type="button" class="accion" disabled>
+                                               Editar
+                                        </button>
+
+                                    <form
+                                            action="{{ route('clientes.destroy', $cliente) }}"
+                                            method="POST"
+                                            style="display: inline-block; margin-left: 12px;"
+                                            onsubmit="return confirm('¿Querés eliminar este cliente? Esta acción no se puede deshacer.');">
+                            @csrf
+                            @method('DELETE')
+
+                                     <button
+                                             type="submit"
+                                             class="accion"
+                                             style="color: #b91c1c; cursor: pointer;">
+                                                         Eliminar
+                                              </button>
+                                      </form>
                                 </td>
-                            </tr>
+                            </tr> 
+                            
+                            
+                            
+                            
+{{--buscador--}}
                         @empty
-                            <tr>
-                                <td colspan="5">
-                                    Todavía no hay clientes registrados.
-                                </td>
-                            </tr>
+    <tr>
+        <td colspan="5">
+            @if ($buscar !== '')
+                No se encontraron clientes con esa búsqueda.
+            @else
+                Todavía no hay clientes registrados.
+            @endif
+        </td>
+    </tr>
                         @endforelse
                     </tbody>
                 </table>

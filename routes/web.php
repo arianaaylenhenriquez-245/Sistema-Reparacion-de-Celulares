@@ -25,6 +25,9 @@ Route::get('/clientes', [ClienteController::class, 'index'])
 Route::post('/clientes', [ClienteController::class, 'store'])
     ->name('clientes.store');
 
+Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])
+    ->name('clientes.destroy');  //identifica al cliente qeu quiero eliminar
+
 // pantalla equipos enrutamiento xd
 
 Route::view('/equipos', 'equipos')->name('equipos');
